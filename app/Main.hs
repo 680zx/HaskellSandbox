@@ -1,4 +1,4 @@
--- {-# LANGUAGE MultiWayIf #-}
+{-# LANGUAGE MultiWayIf #-}
 
 module Main where
 
@@ -16,8 +16,18 @@ select option =
         4 -> "this is 4"
         _ -> "this is default"
 
+calculateTime :: Int -> Int
+calculateTime time =
+    let threshold = delta * 6
+        delta = 10
+    in
+    if | time > threshold -> time + delta
+        | time <= threshold -> time - delta
+        | otherwise -> time
+
 main :: IO ()
-main = print (select (square (prod 1 2)))
+main = print (calculateTime 50)
+--main = print (select (square (prod 1 2)))
 
 {-
     Multiline Comment
