@@ -45,10 +45,12 @@ main :: IO ()
 --main = print (head ["1", "2"])
 {-main = print (str1, str2)
         where (str1, str2) = makeAlias "str1" "str2"
--}
 main = let person = getEmail (1, "New", "mail@any.com", 20)
         in print person
+-}
 
+-- lambda functions
+main = print . (\x -> x * 10) $ 10
 
 {-
     Multiline Comment
