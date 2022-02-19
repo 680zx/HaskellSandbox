@@ -39,7 +39,18 @@ calculateTime time =
 makeAlias :: String -> String -> (String, String)
 makeAlias str1 str2 = (str1, str2)
 
+max' :: (Ord  a) => [a] -> a
+max' [] = error "This is empty list. It cannot contain max element."
+max' [a] = a
+max' (x:xs) = max x (max' xs)
+
+
+func :: [Int] -> Int
+func a = 10
+
 main :: IO ()
+main = print . max' $ [6, 2, 3]
+-- main = print . (\n -> n^2) $ 2
 --main = print [""]
 --main = print (select (square (prod 1 2)))
 --main = print (head ["1", "2"])
@@ -50,7 +61,7 @@ main = let person = getEmail (1, "New", "mail@any.com", 20)
 -}
 
 -- lambda functions
-main = print . (\x -> x * 10) $ 10
+--main = print . (\x -> x * 10) $ 10
 
 {-
     Multiline Comment
