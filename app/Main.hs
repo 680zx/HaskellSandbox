@@ -20,8 +20,10 @@ shapeSquare length width
     | otherwise = 0
     where square = length * width
 
-replicate' :: Int -> Int -> [Int]
-replicate' 
+replicate' :: Int -> a -> [a]
+replicate' repeat x
+    | repeat <= 0 = []
+    | otherwise = x : replicate' (repeat - 1) x
 
 main :: IO ()
-main = print . addToList $ 5
+main = print (replicate' 4 "str")
