@@ -25,5 +25,11 @@ replicate' repeat x
     | repeat <= 0 = []
     | otherwise = x : replicate' (repeat - 1) x
 
+take' :: Int -> [a] -> [a]
+take' n _
+    | n <= 0 = []
+take' _ [] = []
+take' n (x:xs) = x : take' (n - 1) xs 
+
 main :: IO ()
-main = print (replicate' 4 "str")
+main = print (take' 4 "str 123")
