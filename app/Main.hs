@@ -29,7 +29,11 @@ take' :: Int -> [a] -> [a]
 take' n _
     | n <= 0 = []
 take' _ [] = []
-take' n (x:xs) = x : take' (n - 1) xs 
+take' n (x:xs) = x : take' (n - 1) xs
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
 
 main :: IO ()
-main = print (take' 4 "str 123")
+main = print (reverse' [1, 2, 3, 4, 5, 6])
