@@ -1,5 +1,6 @@
 module Main where
 import Data.Data (typeOf)
+import Data.String (IsString)
 
 eqTo :: Int -> String
 eqTo 1 = "It's 1"
@@ -35,5 +36,17 @@ reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
 
+data Shape = Shape { type'          :: String
+                    , numberOfSides :: Int
+                    , square        :: Double
+                    , perimeter     :: Double
+                    }
+
 main :: IO ()
-main = print (reverse' [1, 2, 3, 4, 5, 6])
+main = print $ type' triangle
+    where triangle = Shape{
+        type' = "triangle"
+        , numberOfSides = 3
+        , square = 10
+        , perimeter = 8
+    }
