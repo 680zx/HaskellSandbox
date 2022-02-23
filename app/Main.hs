@@ -15,7 +15,7 @@ guard inNum
     | inNum > 10 = [11, 12, 13]
     | otherwise = []
 
-shapeSquare :: Double -> Double -> Double 
+shapeSquare :: Double -> Double -> Double
 shapeSquare length width
     | length > 0 && width > 0 = square
     | otherwise = 0
@@ -42,11 +42,17 @@ data Shape = Shape { type'          :: String
                     , perimeter     :: Double
                     }
 
+-- partial function application
+minus4 :: (Fractional a) => a -> a
+minus4 = subtract 4
+
+zipFunc :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipFunc _ [] _ = []
+zipFunc _ _ [] = []
+zipFunc f (x:xs) (y:ys) = f x y : zipFunc f xs ys
+
+funcTwoArgs :: Int -> Int -> Int
+funcTwoArgs a b = 10 * a + 100 * b
+
 main :: IO ()
-main = print $ type' triangle
-    where triangle = Shape{
-        type' = "triangle"
-        , numberOfSides = 3
-        , square = 10
-        , perimeter = 8
-    }
+main = print (zipFunc (funcTwoArgs) [1, 2, 3] [3, 4, 5])
