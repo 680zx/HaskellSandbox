@@ -55,4 +55,4 @@ funcTwoArgs :: Int -> Int -> Int
 funcTwoArgs a b = 10 * a + 100 * b
 
 main :: IO ()
-main = print (zipFunc (funcTwoArgs) [1, 2, 3] [3, 4, 5])
+main = print (zipFunc (zipFunc (+)) [[1, 2, 3], [10, 20, 30]] [[3, 2, 1], [31, 21, 11]])
