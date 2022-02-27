@@ -54,5 +54,18 @@ zipFunc f (x:xs) (y:ys) = f x y : zipFunc f xs ys
 funcTwoArgs :: Int -> Int -> Int
 funcTwoArgs a b = 10 * a + 100 * b
 
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) = 
+    let lessThanPivot    = quickSort (filter (<= x) xs)
+        greaterThanPivot = quickSort (filter (> x) xs)
+    in lessThanPivot ++ [x] ++ greaterThanPivot
+
+collatzChain :: Int -> [Int]
+collatzChain 1 = [1]
+collatzChain n
+    | even n = n : collatzChain (n `div` 2)
+    | otherwise = n : collatzChain (n * 3 + 1)
+
 main :: IO ()
-main = print (zipFunc (zipFunc (+)) [[1, 2, 3], [10, 20, 30]] [[3, 2, 1], [31, 21, 11]])
+main = print (length [m | m <- [1..8], length (collatzChain m) > 15])
